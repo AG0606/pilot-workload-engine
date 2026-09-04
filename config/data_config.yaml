@@ -1,0 +1,78 @@
+sampling_rates:
+  eeg_raw_hz: 256
+  ecg_raw_hz: 256
+  respiration_hz: 256
+  gsr_hz: 256
+  ocular_hz: 60
+  telemetry_hz: 10
+  target_reference_hz: 20
+
+windowing:
+  window_size_sec: 4.0
+  stride_sec: 1.0
+  overlap_ratio: 0.75
+  max_timestamp_gap_sec: 0.15
+
+channels:
+  eeg:
+    - eeg_fp1
+    - eeg_f7
+    - eeg_f8
+    - eeg_t3
+    - eeg_t4
+    - eeg_t5
+    - eeg_t6
+    - eeg_o1
+    - eeg_o2
+    - eeg_fp2
+    - eeg_fz
+    - eeg_c3
+    - eeg_c4
+    - eeg_cz
+    - eeg_p3
+    - eeg_pz
+    - eeg_p4
+  cardio:
+    - ecg
+    - r
+    - gsr
+  ocular:
+    - pupil_diameter_left
+    - pupil_diameter_right
+    - blink_detected
+    - fixation_duration
+  context:
+    - pitch
+    - roll
+    - yaw_rate
+    - vertical_g
+    - lateral_g
+    - indicated_airspeed
+    - barometric_altitude
+    - autopilot_mode
+
+labels:
+  classes:
+    A: 0
+    B: 1
+    C: 2
+    D: 3
+  names:
+    0: Baseline
+    1: Channelized_Attention
+    2: Diverted_Attention
+    3: Startle
+
+spectral_bands:
+  delta: [0.5, 4.0]
+  theta: [4.0, 8.0]
+  alpha: [8.0, 13.0]
+  beta: [13.0, 30.0]
+  gamma: [30.0, 45.0]
+
+hrv_params:
+  min_peak_distance_samples: 80
+  frequency_bands:
+    vlf: [0.0033, 0.04]
+    lf: [0.04, 0.15]
+    hf: [0.15, 0.40]

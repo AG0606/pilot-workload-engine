@@ -1,0 +1,17 @@
+{
+  "id": "ag0606/pilot-workload-engine-phase1",
+  "title": "pilot workload engine phase1",
+  "code_file": "kaggle_pilot_workload_pipeline.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "false",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [],
+  "competition_sources": [
+    "reducing-commercial-aviation-fatalities"
+  ],
+  "kernel_sources": [],
+  "model_sources": []
+}

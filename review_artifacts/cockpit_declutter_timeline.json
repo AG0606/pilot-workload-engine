@@ -1,0 +1,444 @@
+[
+  {
+    "window_index": 0,
+    "state": "Baseline",
+    "confidence": 0.012559493072330952,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 1,
+    "state": "Baseline",
+    "confidence": 0.023205319419503212,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 2,
+    "state": "Baseline",
+    "confidence": 0.9602926969528198,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 3,
+    "state": "Baseline",
+    "confidence": 0.014191008172929287,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 4,
+    "state": "Baseline",
+    "confidence": 0.9618744254112244,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 5,
+    "state": "Baseline",
+    "confidence": 0.011764084920287132,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 6,
+    "state": "Baseline",
+    "confidence": 0.017978301271796227,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 7,
+    "state": "Baseline",
+    "confidence": 0.9627727270126343,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 8,
+    "state": "Baseline",
+    "confidence": 0.9622794985771179,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 9,
+    "state": "Baseline",
+    "confidence": 0.01676173321902752,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 10,
+    "state": "Baseline",
+    "confidence": 0.022679101675748825,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 11,
+    "state": "Baseline",
+    "confidence": 0.014115443453192711,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 12,
+    "state": "Baseline",
+    "confidence": 0.012132014147937298,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 13,
+    "state": "Baseline",
+    "confidence": 0.9629149436950684,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 14,
+    "state": "Baseline",
+    "confidence": 0.013224268332123756,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 15,
+    "state": "Diverted_Attention",
+    "confidence": 0.9669288992881775,
+    "declutter_level": "LEVEL_1_MODERATE",
+    "auditory_alert": "HEADS_UP_CHIME",
+    "task_allocation": "SHARED_COCKPIT",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": false,
+      "tcas_traffic": false,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Diverted attention detected: Secondary MFD displays decluttered.",
+      "Non-critical COM audio dimmed."
+    ]
+  },
+  {
+    "window_index": 16,
+    "state": "Diverted_Attention",
+    "confidence": 0.015114868991076946,
+    "declutter_level": "LEVEL_1_MODERATE",
+    "auditory_alert": "HEADS_UP_CHIME",
+    "task_allocation": "SHARED_COCKPIT",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": false,
+      "tcas_traffic": false,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Diverted attention detected: Secondary MFD displays decluttered.",
+      "Non-critical COM audio dimmed."
+    ]
+  },
+  {
+    "window_index": 17,
+    "state": "Baseline",
+    "confidence": 0.9592759013175964,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 18,
+    "state": "Baseline",
+    "confidence": 0.015920760110020638,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  },
+  {
+    "window_index": 19,
+    "state": "Baseline",
+    "confidence": 0.024075014516711235,
+    "declutter_level": "LEVEL_0_FULL",
+    "auditory_alert": "NONE",
+    "task_allocation": "PILOT_FLYING",
+    "active_displays": {
+      "pfd_attitude": true,
+      "pfd_airspeed": true,
+      "pfd_altitude": true,
+      "hsi_heading": true,
+      "nav_flight_plan": true,
+      "weather_radar": true,
+      "tcas_traffic": true,
+      "engine_secondary_gauges": true,
+      "comm_frequencies": true
+    },
+    "recommendations": [
+      "Cockpit operating under nominal cognitive workload."
+    ]
+  }
+]
