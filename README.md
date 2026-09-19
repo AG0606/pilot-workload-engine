@@ -2,8 +2,8 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
-[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-24%2F24%20Passing-brightgreen.svg)]()
-[![Inference Latency](https://img.shields.io/badge/Latency%20(p50)-2.78%20ms-success.svg)]()
+[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-39%2F39%20Passing-brightgreen.svg)]()
+[![Inference Latency](https://img.shields.io/badge/Latency%20(p50)-0.35%20ms-success.svg)]()
 [![Avionics Budget](https://img.shields.io/badge/Avionics%20Budget-%3C%2050%20ms-informational.svg)]()
 [![Kaggle Pipeline](https://img.shields.io/badge/Kaggle-Completed-blue.svg)](https://www.kaggle.com/code/ag0606/pilot-workload-engine-phase1)
 
@@ -163,37 +163,42 @@ cd pilot-workload-engine
 pip install -r requirements.txt
 ```
 
-### Running Unit Tests (24/24 Passing)
+### Running Unit Tests (39/39 Passing)
 ```bash
 python -m unittest discover tests -v
 ```
 
-### Running the End-to-End Training Pipeline
+### Running the End-to-End Training & Evaluation Pipeline
 ```bash
-# Synthetic telemetry verification run
-python scripts/train_model.py --synthetic --epochs 5 --batch-size 16 --output-dir ./checkpoints
+# 1. Ingestion & Multi-Rate Synchronization from real flight records
+python scripts/process_raw_data.py --raw-csv data/raw/train.csv --crew 1 --output-dir output
 
-# Real flight data ingestion (from Kaggle dataset)
-python scripts/process_raw_data.py --source kaggle --input-path /path/to/train.csv --output-dir ./processed_data
-python scripts/train_model.py --data-dir ./processed_data --epochs 10 --batch-size 32
-```
+# 2. Train Classical Tree Ensemble Benchmarks (LightGBM, XGBoost, ExtraTrees, RandomForest)
+python scripts/train_classical_models.py --data-path output/pilot_workload_dataset.pt --output-dir review_artifacts
 
-### Building & Pushing to Kaggle
-```bash
-python scripts/build_notebook.py
-kaggle kernels push -p notebooks
+# 3. Train Deep Multi-Modal Attention Network (EEGNet + Cardio ResNet + Cross-Modal Attention)
+python scripts/train_model.py --data-path output/pilot_workload_dataset.pt --epochs 10 --batch-size 32 --output-dir checkpoints
+
+# 4. Train Ocular / PERCLOS Vision Model
+python scripts/train_perclos_model.py --output-dir checkpoints --epochs 5
+
+# 5. Run Comprehensive Side-by-Side Model Benchmark & Avionics Latency Profiling
+python scripts/evaluate_all_models.py --data-path output/pilot_workload_dataset.pt
 ```
 
 ---
 
 ## 7. Benchmarks & Validation Results
 
-* **Avionics Latency Constraint:** $< 50.0\text{ ms}$  
-* **Achieved CPU Latency ($p_{50}$):** **$2.78\text{ ms}$** ($> 14\times$ faster than real-time budget)
-* **Achieved CPU Latency ($p_{99}$):** **$3.54\text{ ms}$**
-* **Validation Accuracy:** **$99.0\%$** on stratified multi-session aviation dataset
-* **Kaggle Multi-Class Log Loss:** **$0.1234$**
-* **Full Technical Report:** See [`REVIEW_1_DOSSIER.md`](REVIEW_1_DOSSIER.md) for mathematical derivations, flight regime definitions, and viva defense Q&A.
+| Model Identifier | Architecture Layer | Balanced Acc (%) | Macro F1 | Multi-Class Log Loss | Latency (p50) | Latency (p99) | Avionics Status (<50ms) |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **LightGBM** | Balanced Gradient Boosted Trees | **81.91%** | **0.8432** | **0.1600** | **0.477 ms** | **0.803 ms** | ✅ PASSED ($> 60\times$ safety margin) |
+| **XGBoost** | Multi-Class Softmax Trees | **76.94%** | **0.8193** | **0.1561** | **0.354 ms** | **2.481 ms** | ✅ PASSED ($> 140\times$ safety margin) |
+| **ExtraTrees** | Extremely Randomized Trees | **78.16%** | **0.7897** | **0.3901** | **15.968 ms** | **32.083 ms** | ✅ PASSED |
+| **RandomForest** | Balanced Subsample Forest | **59.96%** | **0.6485** | **0.2241** | **15.923 ms** | **32.661 ms** | ✅ PASSED |
+| **DeepMultimodalNet** | EEGNet + Cardio ResNet + Attention Fusion | **74.31%** | **0.5837** | **0.6431** | **1.922 ms** | **3.659 ms** | ✅ PASSED ($> 13\times$ safety margin) |
+
+* **Full Walkthrough & Technical Report:** See [`ML_WALKTHROUGH.md`](ML_WALKTHROUGH.md) and [`REVIEW_1_DOSSIER.md`](REVIEW_1_DOSSIER.md).
 
 ---
 

@@ -1,0 +1,62 @@
+[
+  {
+    "model_name": "LightGBM",
+    "architecture_type": "Classical Gradient Boosted / Tree Ensemble",
+    "balanced_accuracy": 81.91,
+    "macro_f1": 0.8432,
+    "weighted_f1": 0.9409,
+    "log_loss": 0.16,
+    "p50_latency_ms": 0.477,
+    "p99_latency_ms": 0.803,
+    "model_size_kb": 1440.8,
+    "avionics_budget_met": true
+  },
+  {
+    "model_name": "XGBoost",
+    "architecture_type": "Classical Gradient Boosted / Tree Ensemble",
+    "balanced_accuracy": 76.94,
+    "macro_f1": 0.8193,
+    "weighted_f1": 0.9438,
+    "log_loss": 0.1561,
+    "p50_latency_ms": 0.354,
+    "p99_latency_ms": 2.481,
+    "model_size_kb": 839.3,
+    "avionics_budget_met": true
+  },
+  {
+    "model_name": "ExtraTrees",
+    "architecture_type": "Classical Gradient Boosted / Tree Ensemble",
+    "balanced_accuracy": 78.16,
+    "macro_f1": 0.7897,
+    "weighted_f1": 0.9129,
+    "log_loss": 0.3901,
+    "p50_latency_ms": 15.968,
+    "p99_latency_ms": 32.083,
+    "model_size_kb": 5493.6,
+    "avionics_budget_met": true
+  },
+  {
+    "model_name": "RandomForest",
+    "architecture_type": "Classical Gradient Boosted / Tree Ensemble",
+    "balanced_accuracy": 59.96,
+    "macro_f1": 0.6485,
+    "weighted_f1": 0.9114,
+    "log_loss": 0.2241,
+    "p50_latency_ms": 15.923,
+    "p99_latency_ms": 32.661,
+    "model_size_kb": 2921.4,
+    "avionics_budget_met": true
+  },
+  {
+    "model_name": "DeepMultimodalAttentionNet",
+    "architecture_type": "Spatial-Temporal EEGNet + Cardio ResNet + Cross-Modal Attention",
+    "balanced_accuracy": 74.31,
+    "macro_f1": 0.5837,
+    "weighted_f1": 0.8031,
+    "log_loss": 0.6431,
+    "p50_latency_ms": 1.922,
+    "p99_latency_ms": 3.659,
+    "model_size_kb": 6172.5,
+    "avionics_budget_met": true
+  }
+]

@@ -65,11 +65,9 @@ def compute_band_powers(
         band_powers[band_name] = power_arr.astype(np.float32)
 
     # Workload and cognitive arousal spectral ratios
-    theta = band_powers["theta"]
-    beta = band_powers["beta"]
-    alpha = band_powers["alpha"]
-
-    band_powers["theta_beta_ratio"] = (theta / (beta + eps)).astype(np.float32)
-    band_powers["alpha_beta_ratio"] = (alpha / (beta + eps)).astype(np.float32)
+    if "theta" in band_powers and "beta" in band_powers:
+        band_powers["theta_beta_ratio"] = (band_powers["theta"] / (band_powers["beta"] + eps)).astype(np.float32)
+    if "alpha" in band_powers and "beta" in band_powers:
+        band_powers["alpha_beta_ratio"] = (band_powers["alpha"] / (band_powers["beta"] + eps)).astype(np.float32)
 
     return band_powers

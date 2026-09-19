@@ -33,8 +33,15 @@ venv.bak/
 .ipynb_checkpoints
 *-checkpoint.ipynb
 
+# Raw data files & datasets
+/data/
+/raw_data/
+*.csv
+*.zip
+
 # Model checkpoints & large binary dumps
 checkpoints/
+*.joblib
 *.pt
 *.pth
 *.onnx

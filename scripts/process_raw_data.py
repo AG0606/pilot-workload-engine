@@ -96,6 +96,17 @@ def run_pipeline(
             streams=streams,
             categorical_streams=["label"],
         )
+        extractor = SlidingWindowExtractor(
+            window_size_sec=win_size_sec,
+            stride_sec=stride_sec,
+            target_fs_hz=target_fs,
+            max_timestamp_gap_sec=max_gap_sec,
+        )
+        windows = extractor.extract_windows(
+            data_streams=aligned,
+            reference_time=ref_time,
+            session_ids=session_ids,
+        )
     else:
         loader = KaggleAviationLoader(
             time_column="time",
@@ -108,46 +119,62 @@ def run_pipeline(
             experiment_filter=experiment_filter,
             max_rows=max_rows,
         )
-        extracted = loader.extract_arrays(df)
+        print(f"Loaded raw flight records: {len(df):,} rows.")
 
-        t_vec = extracted["time"]
-        # Generate companion dummy ocular and flight telemetry for single-source datasets
-        n_samples = len(t_vec)
-        ocular_dummy = np.zeros((n_samples, len(config["channels"]["ocular"])), dtype=np.float32)
-        telemetry_dummy = np.zeros((n_samples, len(config["channels"]["context"])), dtype=np.float32)
-        # Standard 1.0G equilibrium
-        telemetry_dummy[:, 3] = 1.0
-
-        streams = {
-            "eeg": (t_vec, extracted["eeg"]),
-            "cardio": (t_vec, extracted["cardio"]),
-            "ocular": (t_vec, ocular_dummy),
-            "context": (t_vec, telemetry_dummy),
-            "label": (t_vec, extracted["label"]),
-        }
-        ref_time, aligned = synchronizer.synchronize_streams(
-            streams=streams,
-            categorical_streams=["label"],
+        extractor = SlidingWindowExtractor(
+            window_size_sec=win_size_sec,
+            stride_sec=stride_sec,
+            target_fs_hz=target_fs,
+            max_timestamp_gap_sec=max_gap_sec,
         )
-        # Resample session IDs via nearest neighbor
-        session_ids = synchronizer.align_modality(
-            time_vec=t_vec,
-            data=extracted["session_id"],
-            reference_time=ref_time,
-            is_categorical=True,
-        ).squeeze()
 
-    extractor = SlidingWindowExtractor(
-        window_size_sec=win_size_sec,
-        stride_sec=stride_sec,
-        target_fs_hz=target_fs,
-        max_timestamp_gap_sec=max_gap_sec,
-    )
-    windows = extractor.extract_windows(
-        data_streams=aligned,
-        reference_time=ref_time,
-        session_ids=session_ids,
-    )
+        session_col = (
+            df["crew"].astype(str) + "_" + df["experiment"].astype(str) + "_" + df["seat"].astype(str)
+            if {"crew", "experiment", "seat"}.issubset(df.columns)
+            else np.zeros(len(df), dtype=object)
+        )
+        df["_session_id"] = session_col
+
+        all_windows = {"eeg": [], "cardio": [], "ocular": [], "context": [], "label": []}
+
+        for session_id, group in df.groupby("_session_id"):
+            extracted = loader.extract_arrays(group)
+            t_vec = extracted["time"]
+            n_samples = len(t_vec)
+            if n_samples < int(round(win_size_sec * 256.0)):
+                continue
+
+            ocular_dummy = np.zeros((n_samples, len(config["channels"]["ocular"])), dtype=np.float32)
+            telemetry_dummy = np.zeros((n_samples, len(config["channels"]["context"])), dtype=np.float32)
+            telemetry_dummy[:, 3] = 1.0  # 1.0G equilibrium
+
+            streams = {
+                "eeg": (t_vec, extracted["eeg"]),
+                "cardio": (t_vec, extracted["cardio"]),
+                "ocular": (t_vec, ocular_dummy),
+                "context": (t_vec, telemetry_dummy),
+                "label": (t_vec, extracted["label"]),
+            }
+            ref_time, aligned = synchronizer.synchronize_streams(
+                streams=streams,
+                categorical_streams=["label"],
+            )
+            s_ids = np.full(len(ref_time), session_id)
+            wins = extractor.extract_windows(
+                data_streams=aligned,
+                reference_time=ref_time,
+                session_ids=s_ids,
+            )
+            if len(wins["label"]) > 0:
+                for k in all_windows:
+                    all_windows[k].append(wins[k])
+                counts = np.bincount(wins["label"], minlength=4)
+                print(f"Session {session_id}: {len(wins['label'])} windows | A: {counts[0]}, B: {counts[1]}, C: {counts[2]}, D: {counts[3]}")
+
+        windows = {k: np.concatenate(v, axis=0) for k, v in all_windows.items()}
+        print(f"Total synchronized windows extracted: {len(windows['label']):,}")
+        total_counts = np.bincount(windows["label"], minlength=4)
+        print(f"Aggregated class distribution: Baseline(A)={total_counts[0]}, CA(B)={total_counts[1]}, DA(C)={total_counts[2]}, Startle(D)={total_counts[3]}")
 
     validate_sliding_windows(
         windows=windows,

@@ -1,3 +1,4 @@
+from .a320_eeg_loader import A320FlightDeckEEGLoader
 from .base_loader import BaseModalityLoader
 from .cogpilot_loader import CogPilotLoader
 from .kaggle_aviation_loader import KaggleAviationLoader
@@ -9,6 +10,8 @@ __all__ = [
     "KaggleAviationLoader",
     "CogPilotLoader",
     "TelemetryLoader",
+    "A320FlightDeckEEGLoader",
     "MultiModalSynchronizer",
     "SlidingWindowExtractor",
 ]
+

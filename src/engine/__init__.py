@@ -5,6 +5,11 @@ from .decision_engine import (
     DeclutterLevel,
     TaskAllocation,
 )
+from .sensor_fusion import (
+    CognitiveLoadLevel,
+    CognitiveSnapshotRecord,
+    KalmanCognitiveSensorFusion,
+)
 
 __all__ = [
     "CockpitDecisionEngine",
@@ -12,4 +17,8 @@ __all__ = [
     "DeclutterLevel",
     "AuditoryAlert",
     "TaskAllocation",
+    "KalmanCognitiveSensorFusion",
+    "CognitiveLoadLevel",
+    "CognitiveSnapshotRecord",
 ]
+

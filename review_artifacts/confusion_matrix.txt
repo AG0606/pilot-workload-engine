@@ -1,8 +1,9 @@
-================ CONFUSION MATRIX ================
-True \ Pred  | Baseline   | CA         | DA         | Startle   
-------------------------------------------------------------
-Baseline     | 46         | 0          | 0          | 0         
-CA           | 0          | 20         | 0          | 0         
-DA           | 0          | 0          | 26         | 0         
-Startle      | 0          | 0          | 0          | 8         
-==================================================
+CONFUSION MATRIX (LightGBM - Held-out Aviation Test Set):
+----------------------------------------------------------
+                 Predicted: [A]   [B]   [C]   [D]
+Actual [A: Base]:            171     0     2     7
+Actual [B: CA]  :              1     5     0     0
+Actual [C: DA]  :              1     0   141     0
+Actual [D: SS]  :              9     0     0     9
+----------------------------------------------------------
+Key: [A] Baseline, [B] Channelized Attention, [C] Diverted Attention, [D] Startle/Surprise

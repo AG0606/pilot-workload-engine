@@ -57,19 +57,46 @@ class KaggleAviationLoader(BaseModalityLoader):
     ) -> pd.DataFrame:
         """Loads and filters raw Kaggle dataset into a memory-efficient DataFrame."""
         if isinstance(source, (str, Path)):
-            df = pd.read_csv(source, nrows=max_rows)
+            dtypes = {
+                "crew": "int8", "experiment": "category", "seat": "int8", "event": "category",
+                "time": "float32",
+            }
+            for ch in self.channels:
+                dtypes[ch] = "float32"
+
+            chunks = []
+            total_loaded = 0
+            for chunk in pd.read_csv(source, chunksize=100_000, dtype=dtypes):
+                if crew_filter is not None and "crew" in chunk.columns:
+                    chunk = chunk[chunk["crew"] == crew_filter]
+                if experiment_filter is not None and "experiment" in chunk.columns:
+                    chunk = chunk[chunk["experiment"] == experiment_filter]
+                if not chunk.empty:
+                    chunks.append(chunk)
+                    total_loaded += len(chunk)
+                    if max_rows is not None and total_loaded >= max_rows:
+                        break
+
+            if not chunks:
+                raise ValueError("No records matched the specified filters.")
+            df = pd.concat(chunks, ignore_index=True)
+            if max_rows is not None and len(df) > max_rows:
+                df = df.iloc[:max_rows]
         elif isinstance(source, pd.DataFrame):
             df = source.copy()
             if max_rows is not None:
                 df = df.iloc[:max_rows]
+            if crew_filter is not None and "crew" in df.columns:
+                df = df[df["crew"] == crew_filter]
+            if experiment_filter is not None and "experiment" in df.columns:
+                df = df[df["experiment"] == experiment_filter]
         else:
             raise TypeError(f"Unsupported source type: {type(source)}")
 
-        if crew_filter is not None and "crew" in df.columns:
-            df = df[df["crew"] == crew_filter]
-
-        if experiment_filter is not None and "experiment" in df.columns:
-            df = df[df["experiment"] == experiment_filter]
+        if {"crew", "experiment", "seat", "time"}.issubset(df.columns):
+            df = df.sort_values(by=["crew", "experiment", "seat", "time"]).reset_index(drop=True)
+        elif self.time_column in df.columns:
+            df = df.sort_values(by=[self.time_column]).reset_index(drop=True)
 
         self.validate_schema(df)
         return df
