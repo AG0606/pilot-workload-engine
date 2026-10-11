@@ -62,3 +62,6 @@ desktop.ini
 .idea/
 *.swp
 *.swo
+*.db
+*.sqlite
+*_backup.docx

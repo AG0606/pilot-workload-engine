@@ -2,10 +2,11 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 [![PyTorch 2.0+](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
-[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-39%2F39%20Passing-brightgreen.svg)]()
+[![Unit Tests](https://img.shields.io/badge/Unit%20Tests-47%2F47%20Passing-brightgreen.svg)]()
 [![Inference Latency](https://img.shields.io/badge/Latency%20(p50)-0.35%20ms-success.svg)]()
+[![DB Throughput](https://img.shields.io/badge/DB%20Throughput-176k%20records%2Fsec-success.svg)]()
 [![Avionics Budget](https://img.shields.io/badge/Avionics%20Budget-%3C%2050%20ms-informational.svg)]()
-[![Kaggle Pipeline](https://img.shields.io/badge/Kaggle-Completed-blue.svg)](https://www.kaggle.com/code/ag0606/pilot-workload-engine-phase1)
+[![Journal Manuscript](https://img.shields.io/badge/Journal%20Manuscript-IEEE%20Ready-blue.svg)]()
 
 An end-to-end software platform designed to predict real-time pilot cognitive and physical workload from multimodal flight telemetry and bio-signals, feeding a downstream multi-agent decision engine that automates cockpit primary flight display (PFD) decluttering, advisory chimes, and flight task allocation during high-stress flight regimes.
 
