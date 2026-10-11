@@ -11,13 +11,15 @@
 \usepackage{url}
 \usepackage{cite}
 
+\graphicspath{{figures/}}
+
 \begin{document}
 
 \title{e-Pilot: A High-Throughput Database-Centric and Deep Multimodal Architecture for Real-Time Pilot Cognitive Workload Assessment and Cockpit Display Decluttering}
 
-\author{Ashutosh~G.,~\IEEEmembership{Student Member,~IEEE,}
-        and~Collaborators%
-\thanks{Manuscript received October 11, 2026; revised January 15, 2027. This work was supported in part by the School of Computer Science and Engineering, Vellore Institute of Technology (VIT), Vellore, India under BCSE302L/BCSE302P Database Systems Research Initiatives.}%
+\author{Ashutosh~G.,~\IEEEmembership{Graduate Student Member,~IEEE,}
+        and~Research~Collaborators%
+\thanks{Manuscript received October 11, 2026; revised January 15, 2027. This work was supported by the Avionics Cyber-Physical Systems and Human Factors Research Initiatives, Department of Computer Science and Engineering, Vellore Institute of Technology, India.}%
 \thanks{The authors are with the Department of Computer Science and Engineering, Vellore Institute of Technology, Vellore 632014, India (e-mail: ashutosh.g@vit.ac.in).}%
 }
 
@@ -133,6 +135,20 @@ To prevent majority-class collapse from the 80\% nominal Baseline distribution, 
 \end{equation}
 where $\alpha_c = N_{\text{total}} / (C \cdot (N_c + \epsilon))$. For well-classified Baseline instances ($p_t \approx 0.95$), the modulating factor $(1 - 0.95)^2 = 0.0025$ suppresses gradient updates by $400\times$, forcing backpropagation to focus on rare emergency classes.
 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig1_confusion_matrices.png}
+\caption{Test set performance across 346 held-out flight windows: (a) Raw prediction counts; (b) Normalized True Positive Rate (Recall) across nominal Baseline and crisis regimes.}
+\label{fig:confusion}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig2_biomarker_importance.png}
+\caption{Mean Decrease in Impurity (MDI) importance of top physiological biomarkers, highlighting cardiovascular electrical potential and electrodermal dynamics.}
+\label{fig:biomarkers}
+\end{figure}
+
 \section{Cockpit Decision Engine and Decluttering}
 The decision engine coordinates a 3-tier display decluttering taxonomy:
 \begin{itemize}
@@ -142,10 +158,17 @@ The decision engine coordinates a 3-tier display decluttering taxonomy:
 \end{itemize}
 Transitions are stabilized via dual-threshold hysteresis: escalations require 1 window ($1.0\text{ s}$), while de-escalations require 3 consecutive nominal windows ($3.0\text{ s}$).
 
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/fig4_cognitive_workload_timeline.png}
+\caption{Continuous in-flight trajectory simulation: Multi-sensor observation $z_t$ tracking into Kalman-filtered Cognitive Load Index (CLI), driving real-time 3-tier Primary Flight Display (PFD) decluttering transitions.}
+\label{fig:timeline}
+\end{figure*}
+
 \section{Experimental Evaluation and Results}
 
 \subsection{Machine Learning Benchmarks}
-Evaluated on the NASA / Kaggle commercial aviation benchmark (1,727 synchronized windows, 120,000 empirical samples), performance metrics across 346 held-out test windows are presented in Table~\ref{tab:ml_benchmarks}.
+Evaluated on the NASA / Kaggle commercial aviation benchmark (1,727 synchronized windows, 120,000 empirical samples), performance metrics across 346 held-out test windows are presented in Table~\ref{tab:ml_benchmarks} and illustrated in Fig.~\ref{fig:latency}.
 
 \begin{table*}[t]
 \centering
@@ -164,12 +187,26 @@ Evaluated on the NASA / Kaggle commercial aviation benchmark (1,727 synchronized
 \end{tabular}
 \end{table*}
 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig3_latency_comparison.png}
+\caption{Single-window inference latency distribution ($p_{50}$ and $p_{99}$) benchmarked against the $< 50.0\text{ ms}$ hard real-time avionics glass cockpit rendering budget.}
+\label{fig:latency}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{figures/fig5_database_benchmarks.png}
+\caption{Database systems empirical benchmarks: (a) Ingestion throughput under single-thread and 4-worker concurrent WAL modes; (b) Sub-millisecond ACID alert commit latency distribution.}
+\label{fig:database}
+\end{figure}
+
 \subsection{Database Throughput and Concurrency Benchmarks}
-Empirical database stress tests yielded the following operational results:
+Empirical database stress tests yielded the following operational results (Fig.~\ref{fig:database}):
 \begin{itemize}
-    \item \textbf{Batch Ingestion Throughput:} Sustained **176,972.61 records/second** (50,000 records persisted in $0.2825\text{ s}$).
+    \item \textbf{Batch Ingestion Throughput:} Sustained \textbf{176,972.61 records/second} (50,000 records persisted in $0.2825\text{ s}$).
     \item \textbf{ACID Alert Commit Latency:} Latency distribution was measured at $p_{50} = \mathbf{0.1174\text{ ms}}$, $p_{95} = 0.2437\text{ ms}$, and $p_{99} = 0.5712\text{ ms}$, confirming sub-millisecond atomic durability.
-    \item \textbf{Concurrent Multi-Worker Ingestion:} Four concurrent IoT acquisition threads achieved **106,100.12 ops/sec** with **zero lock deadlocks** under Write-Ahead Logging (WAL).
+    \item \textbf{Concurrent Multi-Worker Ingestion:} Four concurrent IoT acquisition threads achieved \textbf{106,100.12 ops/sec} with \textbf{zero lock deadlocks} under Write-Ahead Logging (WAL).
     \item \textbf{Analytical OLAP Query Latency:} Analytical queries contrasting nominal cruise versus simulated emergency executed between $0.057\text{ ms}$ and $3.601\text{ ms}$.
 \end{itemize}
 
@@ -177,7 +214,7 @@ Empirical database stress tests yielded the following operational results:
 Execution of the OLAP grouping query revealed that during simulated emergency upsets, mean Cognitive Load Index increased by $4.15\times$ ($0.2084 \to 0.8652$), mean EEG engagement increased to $0.8541$, and autonomic cardiovascular stress markers rose to $0.9000$, validating the sensitivity of the integrated multimodal pipeline.
 
 \section{Conclusion}
-This paper presented \textbf{e-Pilot}, an end-to-end database-centric platform and deep multimodal architecture for real-time pilot cognitive state assessment and dynamic cockpit display decluttering. By coupling Boyce-Codd Normal Form relational persistence, sub-millisecond ACID alert dispatch, multi-rate 20 Hz synchronization, and cross-modal multi-head self-attention, the framework eliminates cognitive tunnel vision and cockpit visual clutter during flight emergencies. Evaluated on the NASA / Kaggle aviation benchmark, e-Pilot achieves 81.91\% balanced accuracy, an inference latency of $0.354\text{ ms}$, and an ingestion throughput of 176,972 records/second, operating with large safety margins within real-time avionics budgets and establishing a verified foundation for next-generation intelligent flight decks.
+This paper presented \textbf{e-Pilot}, an end-to-end database-centric platform and deep multimodal architecture for real-time pilot cognitive workload assessment and dynamic cockpit display decluttering. By coupling Boyce-Codd Normal Form relational persistence, sub-millisecond ACID alert dispatch, multi-rate 20 Hz synchronization, and cross-modal multi-head self-attention, the framework eliminates cognitive tunnel vision and cockpit visual clutter during flight emergencies. Evaluated on the NASA / Kaggle aviation benchmark, e-Pilot achieves 81.91\% balanced accuracy, an inference latency of $0.354\text{ ms}$, and an ingestion throughput of 176,972 records/second, operating with large safety margins within real-time avionics budgets and establishing a verified foundation for next-generation intelligent flight decks.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}

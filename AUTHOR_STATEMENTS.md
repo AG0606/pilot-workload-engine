@@ -11,7 +11,7 @@
 - **Writing - Original Draft:** Ashutosh G.
 - **Writing - Review & Editing:** Ashutosh G.
 - **Visualization:** Ashutosh G.
-- **Supervision:** Course Faculty, School of Computer Science and Engineering, VIT Vellore.
+- **Supervision:** Principal Investigator, Avionics Cyber-Physical Systems Laboratory, School of Computer Science and Engineering, VIT Vellore.
 - **Project Administration:** Ashutosh G.
 
 ### Declaration of Competing Interest

@@ -87,9 +87,9 @@ def generate_comprehensive_project_doc(output_docx_path: Path):
     meta_p = doc.add_paragraph()
     meta_p.paragraph_format.space_after = Pt(18)
     run_meta = meta_p.add_run(
-        "Course Code: BCSE302L Database Systems & BCSE302P Database Systems Lab\n"
-        "Institution: School of Computer Science and Engineering, VIT Vellore\n"
-        "Project Deliverable: Final Comprehensive Course Project Report & Journal-Ready Monograph"
+        "Avionics Cyber-Physical Systems & Neuroergonomics Research Laboratory\n"
+        "Department of Computer Science and Engineering, Vellore Institute of Technology, India\n"
+        "Document Type: Comprehensive Scientific Monograph & Technical Architecture Reference"
     )
     run_meta.font.size = Pt(10)
     run_meta.font.bold = True
@@ -109,22 +109,21 @@ def generate_comprehensive_project_doc(output_docx_path: Path):
         "cognitive workload, situational awareness, and decision-making state under-instrumented."
     )
     doc.add_paragraph(
-        "This project delivers an end-to-end, database-centric, and IoT-enabled platform engineered for real-time "
-        "multimodal pilot cognitive workload assessment and dynamic cockpit display decluttering. The primary academic "
-        "contribution, aligned strictly with the course objectives of BCSE302L and BCSE302P, is the physical and logical "
-        "database architecture: an 11-entity relational schema normalized to Boyce-Codd Normal Form (BCNF); composite B+ "
-        "tree indexing on (flight_id, timestamp) for high-frequency time-series ingestion; ACID-compliant transactional "
-        "alert generation and immutable audit logging committing in 0.117 ms (p50); non-blocking Write-Ahead Logging (WAL) "
-        "concurrency handling multi-stream IoT ingestion at 176,972 records/second; and an advanced analytical query suite "
-        "utilizing SQL window functions to contrast normal cruise versus simulated emergencies."
+        "This research delivers an end-to-end, database-centric, and IoT-enabled platform engineered for real-time "
+        "multimodal pilot cognitive workload assessment and dynamic cockpit display decluttering. The central data engineering "
+        "contribution is the physical and logical database architecture: an 11-entity relational schema normalized to "
+        "Boyce-Codd Normal Form (BCNF); composite B+ tree indexing on (flight_id, timestamp) for high-frequency time-series "
+        "ingestion; ACID-compliant transactional alert generation and immutable audit logging committing in 0.117 ms (p50); "
+        "non-blocking Write-Ahead Logging (WAL) concurrency handling multi-stream IoT ingestion at 176,972 records/second; "
+        "and an advanced analytical query suite utilizing SQL window functions to contrast normal cruise versus simulated emergencies."
     )
     doc.add_paragraph(
         "The relational database layer is coupled with a lightweight, avionics-grade multimodal AI engine combining "
         "spatial-temporal EEGNet, cardio 1D residual networks, cross-modal multi-head self-attention, and Kalman filter "
         "sensor fusion. Evaluated on the NASA/Kaggle commercial aviation benchmark (120,000 empirical samples), the system "
         "achieves 81.91% balanced accuracy (0.8432 Macro F1) with an inference latency of 0.354 ms (p50), operating well "
-        "within the strict < 50.0 ms hard real-time avionics budget. The project satisfies all seven syllabus modules, "
-        "providing a verified, publication-ready framework for next-generation adaptive flight decks."
+        "within the strict < 50.0 ms hard real-time avionics budget. This monograph provides a verified, publication-ready "
+        "blueprint for next-generation adaptive flight decks."
     )
 
     # -------------------------------------------------------------------------
@@ -135,7 +134,7 @@ def generate_comprehensive_project_doc(output_docx_path: Path):
         "1. Introduction & Operational Motivation",
         "    1.1 The Aviation Safety Hazard: Loss of Control In-Flight (LOC-I)",
         "    1.2 The Glass Cockpit Display Bottleneck",
-        "    1.3 Project-to-Syllabus Module Mapping",
+        "    1.3 Cyber-Physical Avionics Architecture Scope",
         "2. Problem Statement & Engineering Constraints",
         "3. Cognitive & Behavioural Constructs and Sensing Modalities",
         "4. IoT Edge Architecture & Multi-Rate Telemetry Ingestion",
@@ -147,7 +146,7 @@ def generate_comprehensive_project_doc(output_docx_path: Path):
         "    5.3 Kalman Filter Multi-Sensor Fusion Engine",
         "    5.4 Computer Vision Eye-Tracking & PERCLOS Vigilance Model",
         "    5.5 Classical Machine Learning Baselines",
-        "6. Core Database Design & Data Engineering (BCSE302L/P Primary Focus)",
+        "6. Core Database Design & Data Engineering Architecture",
         "    6.1 Entity-Relationship (ER) Architecture & Table Specifications",
         "    6.2 Normalisation: Step-by-Step Functional Dependency Analysis & BCNF Proof",
         "    6.3 Physical Database Design: Composite B+ Tree Indexing & Query Cost Analysis",
@@ -226,7 +225,7 @@ def generate_comprehensive_project_doc(output_docx_path: Path):
         "• Hard Real-Time Avionics Latency Budget (< 50.0 ms): Because modern glass cockpit symbol generators refresh at "
         "20–60 Hz, the entire pipeline (synchronization, feature extraction, neural inference, and database transactional "
         "alert dispatch) must execute in under 50.0 ms per window.\n"
-        "• Strict Database Integrity & BCNF Normalization: Satisfying all academic syllabus modules of BCSE302L and BCSE302P."
+        "• Strict Database Integrity & BCNF Normalization: Formally eliminating insertion, update, and deletion anomalies while enforcing relational constraints."
     )
 
     # -------------------------------------------------------------------------
@@ -293,14 +292,13 @@ def generate_comprehensive_project_doc(output_docx_path: Path):
     )
 
     # -------------------------------------------------------------------------
-    # Section 6: Core Database Design (BCSE302L/P Primary Focus)
+    # Section 6: Core Database Design
     # -------------------------------------------------------------------------
-    doc.add_heading("6. Core Database Design & Data Engineering", level=1)
+    doc.add_heading("6. Core Database Design & Data Engineering Architecture", level=1)
     doc.add_paragraph(
         "The relational database serves as the authoritative system of record for all flight operations, crew credentials, "
-        "sensor devices, time-series telemetry, and safety-critical alerts. In strict accordance with BCSE302L and BCSE302P "
-        "curriculum standards, the schema was engineered to satisfy Boyce-Codd Normal Form (BCNF), sub-millisecond ACID "
-        "transactions, composite B+ tree indexing, and non-blocking concurrency."
+        "sensor devices, time-series telemetry, and safety-critical alerts. The schema was engineered to satisfy Boyce-Codd "
+        "Normal Form (BCNF), sub-millisecond ACID transactions, composite B+ tree indexing, and non-blocking concurrency."
     )
 
     # 6.1 Core Entities Table
@@ -395,7 +393,7 @@ def generate_comprehensive_project_doc(output_docx_path: Path):
     # 6.6 NoSQL Store
     doc.add_heading("6.6 Polyglot Persistence: Secondary NoSQL Time-Series Store", level=2)
     doc.add_paragraph(
-        "In compliance with Syllabus Module 7 (NoSQL Systems & Polyglot Persistence), high-frequency continuous waveforms (256 Hz EEG "
+        "To support high-frequency continuous waveforms without inflating relational row counts, raw signals (256 Hz EEG "
         "and ECG arrays) are persisted in HybridNoSQLTimeSeriesStore as structured JSON/BSON documents partitioned by flight_id and "
         "time window. This demonstrates CAP Theorem trade-offs: Eventual Consistency for high-throughput raw telemetry documents "
         "versus Strict ACID Consistency for alerts and state transitions in the relational DBMS."

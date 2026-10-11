@@ -2,7 +2,7 @@
 -- e-Pilot Database Schema (DDL)
 -- A Database-Centric, IoT-Enabled Framework for Real-Time Multimodal Cognitive
 -- State Assessment and Cockpit Display Decluttering
--- BCSE302L / BCSE302P Database Systems - BCNF Normalized Schema
+-- Production BCNF Normalized Relational Schema for Safety-Critical Avionics Telemetry
 -- ============================================================================
 
 -- Enable foreign keys for SQLite

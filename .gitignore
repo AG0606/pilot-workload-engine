@@ -65,3 +65,13 @@ desktop.ini
 *.db
 *.sqlite
 *_backup.docx
+
+# LaTeX intermediate build artifacts
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
