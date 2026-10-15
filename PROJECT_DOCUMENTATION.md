@@ -6,7 +6,7 @@
 ### Executive Metadata
 * **Project Title:** End-to-End Multimodal Platform for Real-Time Pilot Cognitive Workload Prediction and Cockpit Display Decluttering
 * **Target Domain:** Avionics AI, Human Factors Engineering, Flight Deck Human-Machine Interaction (HMI)
-* **Primary Review Milestone:** Review 1 / Phase 1 & 2 Technical Deliverable
+* **Primary Focus:** IEEE Transactions / Peer-Reviewed Research Journal Submission
 * **Operational Constraint:** Strict Software-Only Implementation (No physical microcontrollers; offline benchmark ingestion simulating real-time telemetry)
 * **Real-Time Avionics Constraint:** End-to-end single-window inference latency budget $< 50.0\text{ ms}$
 * **Measured Performance:** $p_{50} = 2.78\text{ ms}$, $p_{99} = 3.54\text{ ms}$ ($> 14\times$ safety margin)
